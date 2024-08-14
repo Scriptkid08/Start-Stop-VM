@@ -3,8 +3,8 @@
     Connect to Azure using a managed identity and stop all VMs in a specific resource group, skipping VMs that are already stopped.
 
 .DESCRIPTION
-    This script connects to Azure using a managed identity and iterates over each VM in the resource group 'rg-services'.
-    For each VM, it will check if the VM is already in a stopped state and skip it if it is. Otherwise, it will attempt to stop the VM.
+    This script connects to Azure using a managed identity and iterates over each VM in the provided resource group.
+    For each VM, it checks if the VM is already in a stopped state and skips it if it is. Otherwise, it will attempt to stop the VM.
 
 .PARAMETER ResourceGroupName
     The name of the resource group containing the VMs.
@@ -16,7 +16,8 @@
 #>
 
 param (
-    [string]$ResourceGroupName = "rg-services"
+    [Parameter(Mandatory=$true)]
+    [string]$ResourceGroupName
 )
 
 # Enable strict mode for better scripting practices
